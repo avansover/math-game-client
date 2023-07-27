@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { CalcAction, ExcersizeType } from "../models/Enums"
+import { CalcAction, ExcersizeType, IntRange } from "../models/Enums"
 import { FunctionGeneratorParams } from "../models/FunctionCreation"
 
 export const FunctionGenertor = () => {
@@ -17,7 +17,7 @@ export const FunctionGenertor = () => {
 
                 for (let i = 0; i < (functionGeneratorParams.params + signsAmount); ++i) {
                     if (i % 2 === 0) {
-                        let param = Math.floor(Math.random() * 11);
+                        let param = Math.floor(Math.random() * functionGeneratorParams.intRange);
                         params.push(param)
                     } else {
                         params.push(CalcAction.PLUS)
@@ -25,7 +25,7 @@ export const FunctionGenertor = () => {
                 };
                 break;
 
-            case ExcersizeType.MINUS:
+            case ExcersizeType.MINUS_POSITIVE:
 
                 params = minusExerciseGenerator(functionGeneratorParams, signsAmount)
                 console.log(params);
@@ -39,13 +39,13 @@ export const FunctionGenertor = () => {
         setParameters(params)
     }
 
-    const minusExerciseGenerator = (functionGeneratorParams: FunctionGeneratorParams, signsAmount: number) : any => {
+    const minusExerciseGenerator = (functionGeneratorParams: FunctionGeneratorParams, signsAmount: number): (string | number)[] => {
 
         let numbers = [];
         let signs = [];
 
         for (let i = 0; i < functionGeneratorParams.params; ++i) {
-            let param = Math.floor(Math.random() * 11);
+            let param = Math.floor(Math.random() * functionGeneratorParams.intRange);
             numbers.push(param);
         }
 
@@ -56,87 +56,12 @@ export const FunctionGenertor = () => {
         numbers.sort(function (a, b) { return b - a });
 
         let fixedParams = minusExerciseFixer(numbers, signs)
-        console.log(fixedParams);
-        
-        
-
         return fixedParams;
-
     }
 
-    // const minusExerciseFixer = (numbers: number[], signs: string[]) => {
-
-    //     let excersizeResult = 0;
-    //     console.log(numbers);
-    //     console.log(signs);
-
-    //     for (let i = 0; i < numbers.length; ++i) {
-    //         if (i === 0) {
-    //             excersizeResult = excersizeResult + numbers[i]
-    //         } else {
-    //             if (signs[i - 1] === CalcAction.MINUS) {
-    //                 excersizeResult = excersizeResult - numbers[i]
-    //             } else {
-    //                 excersizeResult = excersizeResult + numbers[i]
-    //             }
-    //         }
-    //     }
-
-    //     if (excersizeResult < 0) {
-    //         for (let i = 0; i < signs.length; ++i) {
-    //             if (signs[i] === CalcAction.MINUS) {
-    //                 signs[i] = CalcAction.PLUS
-    //                 break
-    //             }
-    //         }
-    //     }
-    //     console.log(excersizeResult);
-
-    //     if (excersizeResult < 0) {
-    //         minusExerciseFixer(numbers, signs)
-            
-    //     } else {
-    //         let fixedParams = minusExerciseBuilder(numbers, signs)
-    //         console.log(fixedParams);
-            
-    //         return fixedParams
-    //     }
-    // }
-
-    // const minusExerciseFixer = (numbers: number[], signs: string[]) : any => {
-    //     let exerciseResult = 0;
-    
-    //     for (let i = 0; i < numbers.length; ++i) {
-    //         if (i === 0) {
-    //             exerciseResult = exerciseResult + numbers[i];
-    //         } else {
-    //             if (signs[i - 1] === CalcAction.MINUS) {
-    //                 exerciseResult = exerciseResult - numbers[i];
-    //             } else {
-    //                 exerciseResult = exerciseResult + numbers[i];
-    //             }
-    //         }
-    //     }
-    
-    //     if (exerciseResult < 0) {
-    //         for (let i = 0; i < signs.length; ++i) {
-    //             if (signs[i] === CalcAction.MINUS) {
-    //                 signs[i] = CalcAction.PLUS;
-    //                 break;
-    //             }
-    //         }
-    //         // Recursive call is replaced by a while loop
-    //         return minusExerciseFixer(numbers, signs);
-    //     } else {
-    //         let fixedParams = minusExerciseBuilder(numbers, signs);
-    //         console.log(fixedParams);
-    //         return fixedParams;
-    //     }
-    // };
-
-    const minusExerciseFixer = (numbers: number[], signs: string[]) => {
+    const minusExerciseFixer = (numbers: number[], signs: string[]): (string | number)[] => {
         let exerciseResult = 0;
-    
+
         for (let i = 0; i < numbers.length; ++i) {
             if (i === 0) {
                 exerciseResult = exerciseResult + numbers[i];
@@ -148,7 +73,7 @@ export const FunctionGenertor = () => {
                 }
             }
         }
-    
+
         while (exerciseResult < 0) {
             // Look for a minus sign and replace it with a plus sign
             let foundMinus = false;
@@ -159,12 +84,12 @@ export const FunctionGenertor = () => {
                     break;
                 }
             }
-    
+
             // If no minus sign is found, break out of the loop to prevent infinite loop
             if (!foundMinus) {
                 break;
             }
-    
+
             // Recalculate exerciseResult after adjusting the signs
             exerciseResult = 0;
             for (let i = 0; i < numbers.length; ++i) {
@@ -179,13 +104,12 @@ export const FunctionGenertor = () => {
                 }
             }
         }
-    
+
         let fixedParams = minusExerciseBuilder(numbers, signs);
-        console.log(fixedParams);
         return fixedParams;
     };
 
-    const minusExerciseBuilder = (numbers: number[], signs: string[]) => {
+    const minusExerciseBuilder = (numbers: number[], signs: string[]): (string | number)[] => {
 
         let params: (number | string)[] = [];
 
@@ -196,12 +120,6 @@ export const FunctionGenertor = () => {
             }
 
         }
-
-        console.log('====================================');
-        console.log(params);
-        console.log('====================================');
-
-        //setParameters(params)
 
         return params;
     }
@@ -217,7 +135,7 @@ export const FunctionGenertor = () => {
             </div>
 
 
-            <button onClick={() => generateNewFunction({ params: 3, signs: ExcersizeType.MINUS })}>Generate New Function</button>
+            <button onClick={() => generateNewFunction({ params: 3, signs: ExcersizeType.MINUS_POSITIVE, intRange: IntRange.TWENTY })}>Generate New Function</button>
         </div>
 
     )

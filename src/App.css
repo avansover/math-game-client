@@ -1,6 +1,51 @@
 .App {
   text-align: center;
+  height: 98vh;
 }
+
+.App .MainPage{
+  height: 100%;
+}
+
+.MainPage .MainMenuHeader {
+  margin: 3px;
+  background-color: #eeeeee;
+  border: 1px solid #999999 ;
+  border-radius: 5px;
+  height: 10%;
+}
+
+.MainPage .MainMenuPage {
+  display: flex;
+  justify-content: right;
+  height: 90%;
+}
+
+.MainMenuPage .UserCreation {
+  margin-right: 3px;
+  background-color: #dddddd;
+  border: 1px solid #999999 ;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.MainMenuPage .CharacterCreation {
+  margin-right: 3px;
+  background-color: #cccccc;
+  border: 1px solid #999999 ;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.MainMenuPage .CharacterSelection {
+  margin-right: 3px;
+  background-color: #bbbbbb;
+  border: 1px solid #999999 ;
+  border-radius: 5px;
+  width: 30%;
+}
+
+
 
 .App-logo {
   height: 40vmin;
@@ -32,6 +77,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
