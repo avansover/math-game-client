@@ -1,0 +1,8 @@
+.AddUserWindow {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    background-color: #ccffcc;
+    border: 1px solid #999999 ;
+    z-index: 1000;
+}

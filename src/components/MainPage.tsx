@@ -1,14 +1,18 @@
 import { Page } from '../models/Enums';
 import { MainMenu } from '../components/mainMenu/MainMenu';
 import { Header } from '../components/header/Header';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { PopUpHolder } from './PopUpHolder';
+import { PageContext } from '../contextApi/generalContext';
 
 export const MainPage = () => {
 
-    const [page, setPage] = useState<Page>(Page.MAIN_MENU)
+
+    const { page } = useContext(PageContext);
 
     const mainPages = {
-        MainMenu: <MainMenu />
+        MainMenu: <MainMenu />,
+        PopUp: <PopUpHolder />
     }
 
     return (<div className='MainPage'>

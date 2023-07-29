@@ -3,30 +3,34 @@
   height: 98vh;
 }
 
-.App .MainPage{
+.App .MainPage {
   height: 100%;
 }
 
 .MainPage .MainMenuHeader {
   margin: 3px;
   background-color: #eeeeee;
-  border: 1px solid #999999 ;
+  border: 1px solid #999999;
   border-radius: 5px;
   height: 10%;
 }
 
 .MainPage .MainMenuPage {
+  height: 90%;
   display: flex;
   justify-content: right;
-  height: 90%;
 }
 
-
+.MainPage .PopUpHolder {
+  height: 90%;
+  display: flex;
+  justify-content: right;
+}
 
 .MainMenuPage .CharacterCreation {
   margin-right: 3px;
   background-color: #cccccc;
-  border: 1px solid #999999 ;
+  border: 1px solid #999999;
   border-radius: 5px;
   width: 30%;
 }
@@ -34,13 +38,13 @@
 .MainMenuPage .CharacterSelection {
   margin-right: 3px;
   background-color: #bbbbbb;
-  border: 1px solid #999999 ;
+  border: 1px solid #999999;
   border-radius: 5px;
   width: 30%;
 }
 
 .GenericDiv {
-  border: 1px solid #999999 ;
+  border: 1px solid #999999;
 }
 
 .App-logo {
