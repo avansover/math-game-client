@@ -21,13 +21,7 @@
   height: 90%;
 }
 
-.MainMenuPage .UserCreation {
-  margin-right: 3px;
-  background-color: #dddddd;
-  border: 1px solid #999999 ;
-  border-radius: 5px;
-  width: 30%;
-}
+
 
 .MainMenuPage .CharacterCreation {
   margin-right: 3px;
@@ -45,7 +39,9 @@
   width: 30%;
 }
 
-
+.GenericDiv {
+  border: 1px solid #999999 ;
+}
 
 .App-logo {
   height: 40vmin;

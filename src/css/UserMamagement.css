@@ -1,0 +1,27 @@
+.MainMenuPage .UserManagemnet {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3px;
+    background-color: #dddddd;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.UserManagemnet .UsersHolder{
+    display: flex;
+    justify-content: space-around;
+}
+
+.UsersHolder .UserDetails{
+   
+}
+
+.UsersHolder .Users{
+   
+}
+
+.UserManagemnet .AddUser{
+    align-self: flex-start;
+}

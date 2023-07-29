@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { FunctionGenertor } from './components/FunctionGenerator';
+import './css/UserMamagement.css'
 
 import { MainPage } from './components/MainPage';
+import { User, UserContext } from './contextApi/userContext';
 
 function App() {
 
-  
-
- 
-
+  const [user, setUser] = useState<User | null>(null)
   return (
     <div className="App">
-      <MainPage/>
+      <UserContext.Provider value={{ user, setUser }}>
+
+
+        <MainPage />
+      </UserContext.Provider>
     </div>
   );
 }
