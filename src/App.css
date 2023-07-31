@@ -21,10 +21,14 @@
   justify-content: right;
 }
 
-.MainPage .PopUpHolder {
-  height: 90%;
+.App .PopUpHolder {
+  height: 100%;
+  position: fixed;
   display: flex;
-  justify-content: right;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eeee6644;
 }
 
 .MainMenuPage .CharacterCreation {

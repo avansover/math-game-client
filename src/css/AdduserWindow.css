@@ -1,8 +1,14 @@
 .AddUserWindow {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     top: 30%;
-    left: 40%;
-    background-color: #ccffcc;
+    height: 40%;
+    left: 30%;
+    width: 40%;
+    border-radius: 10px;
+    background-color: #99999977;
     border: 1px solid #999999 ;
     z-index: 1000;
 }

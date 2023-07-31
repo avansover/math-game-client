@@ -1,18 +1,27 @@
-import { Page } from '../models/Enums';
 import { MainMenu } from '../components/mainMenu/MainMenu';
 import { Header } from '../components/header/Header';
-import { useContext, useState } from 'react';
-import { PopUpHolder } from './PopUpHolder';
+import { useContext, useEffect, useState } from 'react';
 import { PageContext } from '../contextApi/generalContext';
+import axios from 'axios';
 
 export const MainPage = () => {
 
 
+    useEffect(() => {
+        getUsers()
+
+    }, [])
+
     const { page } = useContext(PageContext);
+
+    const getUsers = async () => {
+        let resp = await axios.get("http://localhost:5000/api/user/get-users");
+        console.log(resp);
+    }
 
     const mainPages = {
         MainMenu: <MainMenu />,
-        PopUp: <PopUpHolder />
+
     }
 
     return (<div className='MainPage'>

@@ -9,6 +9,6 @@ export const Header = () => {
     return <div className="MainMenuHeader">
         Header
         <button onClick={() => setPage(Page.MAIN_MENU)}>MAIN_MENU</button>
-        <button onClick={() => setPage(Page.POP_UP)}>POP_UP</button>
+        <button >POP_UP</button>
     </div>
 }

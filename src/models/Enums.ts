@@ -21,6 +21,6 @@ export enum IntRange {
 
 export enum Page {
     MAIN_MENU = "MainMenu",
-    POP_UP = "PopUp",
+  
     
 }

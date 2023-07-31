@@ -10,6 +10,11 @@ export type PageContextType = {
 }
 
 export type PopUpContextType = {
-    isPopUpOpen: boolean
-    setIsPopUpOpen: React.Dispatch<React.SetStateAction<boolean>>
+    popUpWindow: PopUpWindowType
+    setPopUpWindow: React.Dispatch<React.SetStateAction<PopUpWindowType>>
+}
+
+export type PopUpWindowType = {
+    isOpen: boolean
+    element: JSX.Element | null
 }
