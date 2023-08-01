@@ -1,24 +1,28 @@
 import { MainMenu } from '../components/mainMenu/MainMenu';
 import { Header } from '../components/header/Header';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { PageContext } from '../contextApi/generalContext';
-import axios from 'axios';
+import { UsersContext } from '../contextApi/userContext';
+import axiosTool from '../utils/axiosTool';
 
 export const MainPage = () => {
 
-
-    useEffect(() => {
-        getUsers()
-
-    }, [])
-
+    const { setUsers } = useContext(UsersContext)
     const { page } = useContext(PageContext);
 
-    const getUsers = async () => {
-        let resp = await axios.get("http://localhost:5000/api/user/get-users");
-        console.log(resp);
-    }
+    
 
+    useEffect(() => {
+
+        const getUsers = async () => {
+            let resp = await axiosTool.get("user/get-users")
+            setUsers(resp.data)
+        }
+        getUsers()
+        
+    }, [setUsers])
+
+    
     const mainPages = {
         MainMenu: <MainMenu />,
 

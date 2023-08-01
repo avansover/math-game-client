@@ -1,14 +1,15 @@
 import { createContext } from "react"
 
-export const UserContext = createContext<UserContextType>({} as UserContextType);
+export const UsersContext = createContext<UserContextType>({} as UserContextType);
 
 
 export type UserContextType = {
-    user: User | null
-    setUser: React.Dispatch<React.SetStateAction<User | null>>
+    users: User[]
+    setUsers: React.Dispatch<React.SetStateAction<User[]>>
 }
 
 export type User = {
-
+    Id: number
+    UserName: string
 }
 
