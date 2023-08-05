@@ -18,7 +18,7 @@
 .MainPage .MainMenuPage {
   height: 90%;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
 }
 
 .App .PopUpHolder {
@@ -31,8 +31,10 @@
   background-color: #eeee6644;
 }
 
-.MainMenuPage .CharacterCreation {
+.MainMenuPage .CharacterManagement {
   margin-right: 3px;
+  display: flex;
+  flex-direction: column;
   background-color: #cccccc;
   border: 1px solid #999999;
   border-radius: 5px;
@@ -41,6 +43,15 @@
 
 .MainMenuPage .CharacterSelection {
   margin-right: 3px;
+  background-color: #bbbbbb;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.MainMenuPage .ClassSelection {
+  margin-right: 3px;
+  margin-left: 3px;
   background-color: #bbbbbb;
   border: 1px solid #999999;
   border-radius: 5px;

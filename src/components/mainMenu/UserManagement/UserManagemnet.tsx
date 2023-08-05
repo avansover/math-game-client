@@ -1,20 +1,24 @@
 import { useContext } from "react";
 import { PopUpContext } from "../../../contextApi/generalContext";
 import { AddUserWindow } from "./AddUserWindow";
-import { User, UsersContext } from "../../../contextApi/userContext";
+import { User, UsersListContext } from "../../../contextApi/userContext";
+import { UserSelector } from "./UserSelector";
 
 export const UserManagemnet = () => {
 
     const { setPopUpWindow } = useContext(PopUpContext);
 
-    const { users } = useContext(UsersContext)
+    const { users } = useContext(UsersListContext)
 
     return (<div className="UserManagemnet">
         <div className="UsersHolder">
             <div className="UserDetails">details</div>
-            <div className="Users">
+            <div className="UserList">
                 {users.map((user: User, userIndex: number) => {
-                    return (<div key={userIndex}>{user.UserName}</div>)
+                    return <UserSelector
+                        key={userIndex}
+                        user={user}
+                    />
                 })}
             </div>
         </div>

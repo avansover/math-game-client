@@ -8,7 +8,7 @@ import { PageContext, PopUpWindowType } from './contextApi/generalContext';
 import { Page } from './models/Enums';
 import { PopUpHolder } from './components/PopUpHolder';
 import { PopUpContext } from './contextApi/generalContext';
-import { User, UsersContext } from './contextApi/userContext';
+import { User, UserContext, UsersListContext } from './contextApi/userContext';
 
 function App() {
 
@@ -16,18 +16,23 @@ function App() {
   const [popUpWindow, setPopUpWindow] = useState<PopUpWindowType>({ isOpen: false, element: null });
 
   const [users, setUsers] = useState<User[]>([]);
+  const [user, setUser] = useState<User | null>(null);
 
   return (
     <div className="App">
       <PopUpContext.Provider value={{ popUpWindow, setPopUpWindow }}>
         <PageContext.Provider value={{ page, setPage }}>
 
-          <UsersContext.Provider value={{ users, setUsers }}>
-            <MainPage />
-            {popUpWindow.isOpen && <PopUpHolder
-              popUpWindow={popUpWindow}
-            />}
-          </UsersContext.Provider>
+          <UsersListContext.Provider value={{ users, setUsers }}>
+            <UserContext.Provider value={{ user, setUser }}>
+
+              <MainPage />
+              {popUpWindow.isOpen && <PopUpHolder
+                popUpWindow={popUpWindow}
+              />}
+
+            </UserContext.Provider>
+          </UsersListContext.Provider>
 
         </PageContext.Provider>
       </PopUpContext.Provider>

@@ -2,12 +2,12 @@ import { MainMenu } from '../components/mainMenu/MainMenu';
 import { Header } from '../components/header/Header';
 import { useContext, useEffect } from 'react';
 import { PageContext } from '../contextApi/generalContext';
-import { UsersContext } from '../contextApi/userContext';
+import { UsersListContext } from '../contextApi/userContext';
 import axiosTool from '../utils/axiosTool';
 
 export const MainPage = () => {
 
-    const { setUsers } = useContext(UsersContext)
+    const { setUsers } = useContext(UsersListContext)
     const { page } = useContext(PageContext);
 
     

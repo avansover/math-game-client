@@ -1,11 +1,16 @@
 import { createContext } from "react"
 
-export const UsersContext = createContext<UserContextType>({} as UserContextType);
+export const UsersListContext = createContext<UserListContextType>({} as UserListContextType);
+export const UserContext = createContext<UserContextType>({} as UserContextType);
 
-
-export type UserContextType = {
+export type UserListContextType = {
     users: User[]
     setUsers: React.Dispatch<React.SetStateAction<User[]>>
+}
+
+export type UserContextType = {
+    user: User | null
+    setUser: React.Dispatch<React.SetStateAction<User | null>>
 }
 
 export type User = {

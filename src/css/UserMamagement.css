@@ -18,8 +18,9 @@
    
 }
 
-.UsersHolder .Users{
-   
+.UsersHolder .UserList{
+   display: flex;
+   flex-direction: column;
 }
 
 .UserManagemnet .AddUser{
