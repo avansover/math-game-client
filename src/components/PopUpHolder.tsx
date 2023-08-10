@@ -12,10 +12,7 @@ export const PopUpHolder = (props: {
                 PopUpHolder
             </div>)
         }
-
         return props.popUpWindow.element;
-
-       
     }
 
     return (<div className="PopUpHolder">

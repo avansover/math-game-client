@@ -1,13 +1,14 @@
 import { MainMenu } from '../components/mainMenu/MainMenu';
 import { Header } from '../components/header/Header';
 import { useContext, useEffect } from 'react';
-import { PageContext } from '../contextApi/generalContext';
+import { PageContext, PopUpContext } from '../contextApi/generalContext';
 import { UsersListContext } from '../contextApi/userContext';
 import axiosTool from '../utils/axiosTool';
 
 export const MainPage = () => {
 
     const { setUsers } = useContext(UsersListContext)
+    const { popUpWindow } = useContext(PopUpContext);
     const { page } = useContext(PageContext);
 
     
@@ -20,7 +21,7 @@ export const MainPage = () => {
         }
         getUsers()
         
-    }, [setUsers])
+    }, [setUsers, popUpWindow.userTriger ])
 
     
     const mainPages = {

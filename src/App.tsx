@@ -13,7 +13,7 @@ import { User, UserContext, UsersListContext } from './contextApi/userContext';
 function App() {
 
   const [page, setPage] = useState<Page>(Page.MAIN_MENU);
-  const [popUpWindow, setPopUpWindow] = useState<PopUpWindowType>({ isOpen: false, element: null });
+  const [popUpWindow, setPopUpWindow] = useState<PopUpWindowType>({ isOpen: false, element: null, userTriger: false });
 
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User | null>(null);

@@ -15,6 +15,7 @@ export type PopUpContextType = {
 }
 
 export type PopUpWindowType = {
+    userTriger?: boolean
     isOpen: boolean
     element: JSX.Element | null
 }
