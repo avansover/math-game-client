@@ -89,6 +89,7 @@ export const FunctionGenertor = () => {
             if (!foundMinus) {
                 break;
             }
+            
 
             // Recalculate exerciseResult after adjusting the signs
             exerciseResult = 0;
