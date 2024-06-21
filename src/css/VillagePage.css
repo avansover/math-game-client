@@ -1,0 +1,23 @@
+.MainPage .VillagePage {
+    display: flex;
+    margin-right: 3px;
+    border-radius: 5px;
+    justify-content: space-between;
+    margin: 3px;
+    height: 90%;
+}
+
+.VillagePage .Village {
+    background-color: #eeeeee;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.VillagePage .VillageSideBar {
+    background-color: #eeeeee;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    width: 25%;
+}
+
