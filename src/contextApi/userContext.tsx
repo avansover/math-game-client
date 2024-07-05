@@ -6,24 +6,25 @@ export const PlayerListContext = createContext<PlayerListContextType>({} as Play
 export const UserContext = createContext<UserContextType>({} as UserContextType);
 
 export type UserListContextType = {
-    users: User[]
-    setUsers: React.Dispatch<React.SetStateAction<User[]>>
+    users: User[];
+    setUsers: React.Dispatch<React.SetStateAction<User[]>>;
 }
 
 export type UserContextType = {
-    user: User | null
-    setUser: React.Dispatch<React.SetStateAction<User | null>>
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 export type User = {
-    Id: number
-    UserName: string
+    Id: number;
+    UserName: string;
 }
 
 export type PlayerListContextType = {
     playerList: Player[];
-    setPlayerList: React.Dispatch<React.SetStateAction<Player[]>>
-   
+    setPlayerList: React.Dispatch<React.SetStateAction<Player[]>>;
+    playerListTriger: boolean;
+    setPlayerListTriger: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export type Player = {

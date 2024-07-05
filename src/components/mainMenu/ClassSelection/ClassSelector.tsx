@@ -1,8 +1,8 @@
 import { Button } from "@mui/material"
-import { Class } from "../../../models/Character"
+import { HeroClass } from "../../../models/Character"
 
 export const ClassSelector = (props: {
-    classType: Class
+    classType: HeroClass
 }) => {
 
     const selectClassHandler = () => {
@@ -10,6 +10,6 @@ export const ClassSelector = (props: {
     }
 
     return <Button onClick={selectClassHandler}>
-        {props.classType.ClassName}
+       
     </Button>
 }

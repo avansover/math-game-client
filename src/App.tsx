@@ -2,38 +2,42 @@ import { useState } from 'react';
 import './App.css';
 import './css/UserMamagement.css'
 import './css/JoinPlayerWindow.css'
-import './css/AdduserWindow.css'
+import './css/AddPlayerWindow.css'
 import './css/VillagePage.css'
 
 import { MainPage } from './components/MainPage';
-import { PageContext, PopUpWindowType } from './contextApi/generalContext';
+import { PageContext, PopUpArrayContext, PopUpWindows, PopUpWindowType } from './contextApi/generalContext';
 import { Page } from './models/Enums';
-import { PopUpHolder } from './components/PopUpHolder';
-import { PopUpContext } from './contextApi/generalContext';
+
+
 import { Player, PlayerListContext, User, UserContext, UsersListContext } from './contextApi/userContext';
+import { PopUpArrayHolder } from './components/PopUpsHolder';
 
 function App() {
 
   const [page, setPage] = useState<Page>(Page.VILLAGE);
-  const [popUpWindow, setPopUpWindow] = useState<PopUpWindowType>({ isOpen: false, element: null, userTriger: false });
+
+  const [popUpWindows, setPopUpWindows] = useState<PopUpWindows>({ windows: [] })
 
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User | null>(null);
 
   const [playerList, setPlayerList] = useState<Player[]>([])
+  const [playerListTriger, setPlayerListTriger] = useState<boolean>(false)
 
   return (
     <div className="App">
-      <PopUpContext.Provider value={{ popUpWindow, setPopUpWindow }}>
+      <PopUpArrayContext.Provider value={{ popUpWindows, setPopUpWindows }}>
         <PageContext.Provider value={{ page, setPage }}>
 
-          <PlayerListContext.Provider value={{ playerList, setPlayerList }}>
+          <PlayerListContext.Provider value={{ playerList, setPlayerList, playerListTriger, setPlayerListTriger }}>
             <UsersListContext.Provider value={{ users, setUsers }}>
               <UserContext.Provider value={{ user, setUser }}>
 
                 <MainPage />
-                {popUpWindow.isOpen && <PopUpHolder
-                  popUpWindow={popUpWindow}
+                
+                {popUpWindows.windows.length > 0 && <PopUpArrayHolder
+                  popUpWindows={popUpWindows}
                 />}
 
               </UserContext.Provider>
@@ -41,7 +45,7 @@ function App() {
           </PlayerListContext.Provider>
 
         </PageContext.Provider>
-      </PopUpContext.Provider>
+      </PopUpArrayContext.Provider>
     </div>
   );
 }

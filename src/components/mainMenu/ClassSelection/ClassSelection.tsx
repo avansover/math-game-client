@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import axiosTool from "../../../utils/axiosTool"
-import { Class } from "../../../models/Character"
+import { HeroClass } from "../../../models/Character"
 import { ClassSelector } from "./ClassSelector"
 
 
 export const ClassSelection = () => {
-    const [characterList, setCharacterList] = useState<Class[]>([])
+    const [characterList, setCharacterList] = useState<HeroClass[]>([])
 
     useEffect(() => {
 
@@ -22,7 +22,7 @@ export const ClassSelection = () => {
     }, [])
 
     return (<div className="ClassSelection">
-        {characterList.map((classType: Class, classindex: number) => {
+        {characterList.map((classType: HeroClass, classindex: number) => {
             return <ClassSelector
             key={classindex}
             classType={classType}

@@ -13,6 +13,12 @@ const axiosTool = {
     post: async (urlSuffix: string, data: any) => {
         var resp = await axios.post(baseUrl + urlSuffix, data);
         return resp;
+    },
+
+    delete: async(urlSuffix: string) => {
+        var resp = await axios.delete(baseUrl + urlSuffix);
+        console.log(resp);
+        return resp;
     }
 }
 

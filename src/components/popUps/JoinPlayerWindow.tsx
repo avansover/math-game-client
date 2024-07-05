@@ -1,20 +1,16 @@
-import { useContext } from "react";
-import { PopUpContext } from "../../contextApi/generalContext";
+import { useContext, useState } from "react";
+import { PopUpArrayContext } from "../../contextApi/generalContext";
 import { Button, ButtonGroup } from "@mui/material";
 import { PlayerListContext } from "../../contextApi/userContext";
-import { PlayerJoinCard } from "./PlayerJoinCard";
+import { PlayerJoinCard } from "../village/PlayerJoinCard";
 import { ObjectId } from "mongodb";
+import popUpWindowFunction from "../../utils/popUpWindowTool";
+import { AddPlayerWindow } from "./AddPlayerWindow";
 
-export const JoinPlayerWindow = () => {
+export const JoinPlayerWindow = (props: { popUpIndex: number }) => {
 
-    const { setPopUpWindow } = useContext(PopUpContext);
+    const { popUpWindows, setPopUpWindows } = useContext(PopUpArrayContext);
     const { playerList, setPlayerList } = useContext(PlayerListContext)
-
-    const closeJoinUserWindow = () => {
-
-        setPopUpWindow({ isOpen: false, element: null });
-
-    }
 
     const addPlayerToGame = (playerId: ObjectId) => {
 
@@ -36,7 +32,27 @@ export const JoinPlayerWindow = () => {
         setPlayerList(updatedPlayerList);
     }
 
-    return (<div className="JoinPlayerWindow">
+    const removeHighestIndexPopUp = () => {
+
+        var newPopUpArray = popUpWindowFunction.removePopUpWindow(popUpWindows);
+        setPopUpWindows(newPopUpArray);
+    }
+
+    const openPopUpWindowHundler = () => {
+
+        let newPopUpArray = popUpWindowFunction.addPopUpWindow(popUpWindows, <AddPlayerWindow popUpIndex={popUpWindows.windows.length} />);
+
+        setPopUpWindows(newPopUpArray);
+    }
+
+    return (<div className="JoinPlayerWindow"
+        style={{
+            top: `${popUpWindowFunction.distanceFromTop(props.popUpIndex)}vh`,
+            left: `${popUpWindowFunction.distanceFromLeft(props.popUpIndex)}vh`
+        }} >
+
+        <div className="popUpHeader">Join a player to the advanture</div>
+
         <div style={{ display: 'flex' }}>
             {playerList.map((x, i) => {
                 return <PlayerJoinCard key={i}
@@ -47,13 +63,16 @@ export const JoinPlayerWindow = () => {
             })}
         </div>
 
+
         <ButtonGroup>
             <Button
+                onClick={openPopUpWindowHundler}
                 variant="outlined"
                 color="success"
             >Add Player</Button>
             <Button
-                onClick={closeJoinUserWindow}
+                disabled={popUpWindowFunction.isButtonDisabled(popUpWindows.windows.length - 1, props.popUpIndex)}
+                onClick={removeHighestIndexPopUp}
                 variant="outlined"
                 color="error"
             >Done</Button>

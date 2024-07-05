@@ -1,11 +1,25 @@
 import { Button, ButtonGroup, Card } from "@mui/material"
 import { Player } from "../../contextApi/userContext"
 import { ObjectId } from "mongodb"
+import { useContext } from "react"
+import { PopUpArrayContext } from "../../contextApi/generalContext"
+import popUpWindowFunction from "../../utils/popUpWindowTool"
+import { ClassSelectWindow } from "../popUps/ClassSelectWindow"
 
 export const PlayerSideBarCard = (props: {
     player: Player
 }
 ) => {
+
+    const { popUpWindows, setPopUpWindows } = useContext(PopUpArrayContext);
+
+    const addPopUpWindowHundler = () => {
+
+        let newPopUpArray = popUpWindowFunction.addPopUpWindow(popUpWindows, <ClassSelectWindow
+            popUpIndex={popUpWindows.windows.length} />);
+
+        setPopUpWindows(newPopUpArray);
+    }
 
     return (<Card className="PlayerSideBarCard">
         PlayerSideBarCard: {props.player.name}
@@ -18,7 +32,7 @@ export const PlayerSideBarCard = (props: {
             }
         </div>
 
-        <Button variant="outlined" onClick={() => console.log("Add character")}>Add character</Button>
+        <Button variant="outlined" onClick={() => addPopUpWindowHundler()}>Add character</Button>
 
     </Card>)
 }

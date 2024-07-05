@@ -1,7 +1,8 @@
-export type Class = {
-    Id: number
-    ClassName: string
-    Life: number
+import { ObjectId } from "mongodb"
+
+export type HeroClass = {
+    _id: ObjectId
+    name: string
 }
 
 export type Character = {

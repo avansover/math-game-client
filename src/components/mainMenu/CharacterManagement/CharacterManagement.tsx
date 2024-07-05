@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axiosTool from "../../../utils/axiosTool"
-import { Character, Class } from "../../../models/Character"
+import { Character } from "../../../models/Character"
 import { CharacterSelector } from "./CharacterSelector"
 
 export const CharacterCreation = () => {

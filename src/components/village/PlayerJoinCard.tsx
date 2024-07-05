@@ -1,6 +1,10 @@
 import { Button, ButtonGroup, Card } from "@mui/material"
 import { Player } from "../../contextApi/userContext"
 import { ObjectId } from "mongodb"
+import popUpWindowFunction from "../../utils/popUpWindowTool"
+import { useContext } from "react"
+import { PopUpArrayContext } from "../../contextApi/generalContext"
+import { DeletePlayerWindow } from "../popUps/DeletePlayerWindow"
 
 export const PlayerJoinCard = (props: {
     player: Player,
@@ -8,6 +12,8 @@ export const PlayerJoinCard = (props: {
     removePlayerFromGame: Function
 }
 ) => {
+
+    const { popUpWindows, setPopUpWindows } = useContext(PopUpArrayContext);
 
     const addPlayerToGame = (playerId: ObjectId) => {
         props.addPlayerToGame(playerId)
@@ -17,9 +23,19 @@ export const PlayerJoinCard = (props: {
         props.removePlayerFromGame(playerId)
     }
 
+    const openPopUpWindowHundler = () => {
+
+        let newPopUpArray = popUpWindowFunction.addPopUpWindow(popUpWindows, <DeletePlayerWindow
+            popUpIndex={popUpWindows.windows.length}
+            player={props.player}
+            />);
+
+        setPopUpWindows(newPopUpArray);
+    }
+
 
     return (<Card className="PlayerJoinCard">
-        player card: {props.player.name}
+        player: {props.player.name}
         <div style={{ display: "flex" }}>
             {
                 props.player.characters.length > 0 ?
@@ -31,5 +47,6 @@ export const PlayerJoinCard = (props: {
             <Button onClick={() => addPlayerToGame(props.player._id)}>Join Game</Button>
             <Button onClick={() => removePlayerFromGame(props.player._id)}>Leave Game</Button>
         </ButtonGroup>
+        <Button onClick={openPopUpWindowHundler} color="error" variant="outlined">Delete Player</Button>
     </Card>)
 }
